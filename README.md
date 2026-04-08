@@ -1,218 +1,95 @@
-# ⚡ SmartOps — Smart Internal Operations System
+# 🚀 Smart Internal Operations System (SmartOps)
 
-A full-stack MERN application for managing tasks, projects, team operations with role-based access control, real-time notifications, and rich analytics.
+A premium, scalable MERN stack application designed to streamline internal operations, track task accountability, and provide real-time workflow visibility.
+
+![Dashboard Preview](https://img.shields.io/badge/Status-Live-success)
+![React](https://img.shields.io/badge/Frontend-React-61DAFB?logo=react)
+![Nodejs](https://img.shields.io/badge/Backend-Node.js-339933?logo=node.js)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?logo=mongodb)
 
 ---
 
-## 🚀 Live Features
+## ✨ Features
 
-- **JWT Authentication** — Secure login/register with token-based auth
-- **3-Tier RBAC** — Admin, Manager, User with granular permissions
-- **Task Management** — Full CRUD with Kanban board & list view
-- **Project Management** — Projects with members, progress tracking, budgets
-- **Activity Audit Log** — Every action tracked with full history
-- **Real-time Notifications** — In-app alerts for assignments, comments, mentions
-- **Threaded Comments** — Collaboration on tasks with @mentions
-- **Dashboard Analytics** — Charts, trends, top performers, workload distribution
-- **Smart Auto-Priority** *(invented feature)* — Task priority escalation tracking
-- **Status History** — Every status change recorded with timestamp & author
+### 📊 Intelligent Dashboard
+- **Real-time Stats**: Track total tasks, pending approvals, completed milestones, and team efficiency.
+- **Dynamic Charts**: Visualize task distribution by priority and team performance over time.
+- **Activity Stream**: A living log of all critical actions taken across the system.
+
+### 📋 Optimized Task Management
+- **Multi-View System**: Toggle between a **High-Performance Table** view and a **Productive Kanban Board**.
+- **Mobile-First Design**: Fully responsive card-based layout for mobile users with native snap-scrolling.
+- **Detailed Tracking**: Rich task detail view including project association, tags, and progress logs.
+
+### 🏗️ Project & Team Governance
+- **Role-Based Access (RBAC)**: Secure access levels for Admins, Managers, and Staff.
+- **Project Tracking**: Group tasks by projects with distinct visual identifiers (colors/icons).
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Frontend | React 18, React Router v6, React Query |
-| Styling | Vanilla CSS (custom dark theme) |
-| Charts | Recharts |
-| Forms | React Hook Form |
-| Backend | Node.js, Express.js |
-| Database | MongoDB, Mongoose |
-| Auth | JWT, bcryptjs |
-| Security | Helmet, CORS, Rate Limiting |
+- **Frontend**: React 18, React Router 6, React Query (TanStack), Recharts, Canvas Confetti.
+- **Backend**: Node.js, Express, MongoDB (Mongoose).
+- **Security**: JWT Authentication, Helmet, Express Rate Limit, BcryptJS.
+- **Design**: Vanilla CSS with a custom-engineered modern dark design system.
 
 ---
 
-## 📋 Prerequisites
+## 🚀 Quick Start
 
-- Node.js v18+
-- MongoDB (local or Atlas)
-- npm or yarn
+### Prerequisites
+- Node.js (v18+)
+- MongoDB (Local or Atlas)
 
----
+### Installation
 
-## ⚡ Quick Start
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/sameer0288/smart-ops.git
+   cd smart-ops
+   ```
 
-### 1. Clone / Setup
+2. **Backend Setup**
+   ```bash
+   cd backend
+   npm install
+   cp .env.example .env  # Update with your MONGO_URI and JWT_SECRET
+   npm run seed          # Populate initial demo data
+   npm start
+   ```
 
-```bash
-cd assignment
-```
-
-### 2. Backend Setup
-
-```bash
-cd backend
-npm install
-
-# Edit .env with your MongoDB URI (already configured for localhost)
-# Default: mongodb://localhost:27017/smart-ops
-
-# Start backend
-npm run dev
-```
-
-### 3. Seed Database (Demo Data)
-
-```bash
-cd backend
-npm run seed
-```
-
-### 4. Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm start
-```
-
-App opens at **http://localhost:3000**
+3. **Frontend Setup**
+   ```bash
+   cd ../frontend
+   npm install
+   cp .env.example .env  # Update with your Backend URL
+   npm start
+   ```
 
 ---
 
-## 🔑 Demo Accounts
+## 📧 Demo Credentials
 
 | Role | Email | Password |
-|---|---|---|
-| 👑 Admin | admin@smartops.com | Admin@123 |
-| 🔷 Manager | manager@smartops.com | Manager@123 |
-| 👤 User | sarah@smartops.com | User@123 |
-
-> 💡 The login page has **Quick Login** buttons to auto-fill credentials!
+| :--- | :--- | :--- |
+| **Admin** | `admin@smartops.com` | `Admin@123` |
+| **Manager** | `manager@smartops.com` | `Manager@123` |
+| **User** | `sarah@smartops.com` | `User@123` |
 
 ---
 
-## 🌐 API Endpoints
+## 🌐 Deployment
 
-| Method | Endpoint | Description | Access |
-|---|---|---|---|
-| POST | `/api/auth/register` | Register | Public |
-| POST | `/api/auth/login` | Login | Public |
-| GET | `/api/auth/me` | Current user | Auth |
-| PUT | `/api/auth/profile` | Update profile | Auth |
-| PUT | `/api/auth/password` | Change password | Auth |
-| GET | `/api/tasks` | List tasks (filtered) | Auth |
-| POST | `/api/tasks` | Create task | Auth |
-| GET | `/api/tasks/:id` | Task detail | Auth |
-| PUT | `/api/tasks/:id` | Update task | Auth |
-| DELETE | `/api/tasks/:id` | Archive task | Manager+ |
-| PUT | `/api/tasks/bulk` | Bulk update | Manager+ |
-| GET | `/api/tasks/stats` | Task statistics | Auth |
-| GET | `/api/projects` | List projects | Auth |
-| POST | `/api/projects` | Create project | Manager+ |
-| GET | `/api/projects/:id` | Project detail | Auth |
-| PUT | `/api/projects/:id` | Update project | Manager+ |
-| DELETE | `/api/projects/:id` | Archive project | Admin |
-| POST | `/api/projects/:id/members` | Add member | Manager+ |
-| DELETE | `/api/projects/:id/members/:userId` | Remove member | Manager+ |
-| GET | `/api/users` | List users | Manager+ |
-| POST | `/api/users` | Create user | Admin |
-| PUT | `/api/users/:id` | Update user | Admin |
-| DELETE | `/api/users/:id` | Deactivate user | Admin |
-| GET | `/api/users/:id/workload` | User workload | Manager+ |
-| GET | `/api/dashboard` | Dashboard data | Auth |
-| GET | `/api/dashboard/workload` | Team workload | Manager+ |
-| GET | `/api/activity` | Activity log | Auth |
-| GET | `/api/activity/stats` | Activity stats | Manager+ |
-| GET | `/api/notifications` | Notifications | Auth |
-| PUT | `/api/notifications/read-all` | Mark all read | Auth |
-| GET | `/api/comments/task/:id` | Task comments | Auth |
-| POST | `/api/comments` | Add comment | Auth |
-| PUT | `/api/comments/:id` | Edit comment | Auth (owner) |
-| DELETE | `/api/comments/:id` | Delete comment | Auth (owner/admin) |
+- **Backend**: Hosted on [Render](https://render.com)
+- **Frontend**: Deployed on [Vercel](https://vercel.com)
+- **Database**: [MongoDB Atlas](https://mongodb.com/atlas)
 
 ---
 
-## 🏗️ Project Structure
-
-```
-assignment/
-├── backend/
-│   ├── controllers/      # Business logic
-│   │   ├── authController.js
-│   │   ├── taskController.js
-│   │   ├── projectController.js
-│   │   ├── userController.js
-│   │   ├── dashboardController.js
-│   │   ├── activityController.js
-│   │   ├── notificationController.js
-│   │   └── commentController.js
-│   ├── middleware/       # Auth, validation
-│   ├── models/           # Mongoose schemas
-│   │   ├── User.js
-│   │   ├── Task.js
-│   │   ├── Project.js
-│   │   ├── Activity.js
-│   │   ├── Notification.js
-│   │   └── Comment.js
-│   ├── routes/           # Express routers
-│   ├── scripts/          # Seed script
-│   └── server.js
-├── frontend/
-│   └── src/
-│       ├── components/   # Reusable components
-│       │   ├── layout/   # Sidebar, Topbar, AppLayout
-│       │   └── tasks/    # TaskModal
-│       ├── context/      # AuthContext
-│       ├── pages/        # Route pages
-│       │   ├── Dashboard.js
-│       │   ├── Tasks.js
-│       │   ├── TaskDetail.js
-│       │   ├── Projects.js
-│       │   ├── ProjectDetail.js
-│       │   ├── Users.js
-│       │   ├── ActivityLog.js
-│       │   └── Profile.js
-│       ├── utils/        # API client
-│       └── App.js
-├── README.md
-└── ENGINEERING_DECISIONS.md
-```
+## 👨‍💻 Developer
+**Sameer Ali** - Full Stack Product Engineer
 
 ---
 
-## 🔒 Security Features
-
-- JWT tokens with expiry (7 days)
-- Password hashing with bcryptjs (12 rounds)
-- Rate limiting (100 req/15min)
-- Helmet security headers
-- Input validation with express-validator
-- Role-based route protection
-- Soft deletes (archive, not destroy)
-
----
-
-## 📦 Deployment
-
-### Backend (e.g., Railway/Render)
-
-```bash
-# Set environment variables:
-PORT=5000
-MONGO_URI=mongodb+srv://...
-JWT_SECRET=your_secret_key
-NODE_ENV=production
-CLIENT_URL=https://your-frontend.com
-```
-
-### Frontend (e.g., Vercel/Netlify)
-
-```bash
-# Set environment variable:
-REACT_APP_API_URL=https://your-backend.com/api
-
-npm run build
-```
+*Built for efficiency. Designed for humans.*
