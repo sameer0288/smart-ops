@@ -8,27 +8,27 @@ require('dotenv').config();
 
 const app = express();
 
-// Security Middleware
+// 1. CORS MUST BE FIRST
+app.use(cors({
+  origin: true,
+  credentials: true,
+  optionsSuccessStatus: 200
+}));
+
+// 2. Security Middleware
 app.use(helmet({
   crossOriginResourcePolicy: false,
   crossOriginEmbedderPolicy: false
 }));
 app.use(morgan('combined'));
 
-// Rate Limiting
+// 3. Rate Limiting (Moved after CORS)
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100,
+  windowMs: 15 * 60 * 1000,
+  max: 1000, // Increased for testing
   message: { success: false, message: 'Too many requests, please try again later.' }
 });
 app.use('/api/', limiter);
-
-// CORS
-app.use(cors({
-  origin: true, // Dynamically allow whatever origin is making the request
-  credentials: true,
-  optionsSuccessStatus: 200
-}));
 
 // Body Parser
 app.use(express.json({ limit: '10mb' }));
