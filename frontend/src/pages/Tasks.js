@@ -277,7 +277,7 @@ const Tasks = () => {
                   const isOverdue = task.dueDate && new Date(task.dueDate) < new Date() && !['completed', 'cancelled'].includes(task.status);
                   return (
                     <tr key={task._id} style={{ cursor: 'pointer' }}>
-                      <td onClick={() => window.location.href = `/tasks/${task._id}`}>
+                      <td data-label="Task" onClick={() => window.location.href = `/tasks/${task._id}`}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                           <PriorityDot priority={task.priority} />
                           <div>
@@ -290,9 +290,9 @@ const Tasks = () => {
                           </div>
                         </div>
                       </td>
-                      <td><StatusBadge status={task.status} /></td>
-                      <td><PriorityBadge priority={task.priority} /></td>
-                      <td>
+                      <td data-label="Status"><StatusBadge status={task.status} /></td>
+                      <td data-label="Priority"><PriorityBadge priority={task.priority} /></td>
+                      <td data-label="Assignee">
                         {task.assignee ? (
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                             <div className="avatar avatar-sm">{task.assignee.name?.[0]}</div>
@@ -300,7 +300,7 @@ const Tasks = () => {
                           </div>
                         ) : <span style={{ color: 'var(--text-muted)', fontSize: '12px' }}>Unassigned</span>}
                       </td>
-                      <td>
+                      <td data-label="Project">
                         {task.project ? (
                           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                             <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: task.project.color, flexShrink: 0 }} />
@@ -308,14 +308,14 @@ const Tasks = () => {
                           </div>
                         ) : <span style={{ color: 'var(--text-muted)', fontSize: '12px' }}>—</span>}
                       </td>
-                      <td>
+                      <td data-label="Due Date">
                         {task.dueDate ? (
                           <span style={{ fontSize: '13px', color: isOverdue ? 'var(--danger-light)' : 'var(--text-secondary)' }}>
                             {isOverdue && '⚠️ '}{format(new Date(task.dueDate), 'MMM d, yyyy')}
                           </span>
                         ) : <span style={{ color: 'var(--text-muted)', fontSize: '12px' }}>—</span>}
                       </td>
-                      <td>
+                      <td data-label="Actions">
                         <div style={{ display: 'flex', gap: '4px' }}>
                           <button className="icon-btn" onClick={() => handleEdit(task)} style={{ fontSize: '13px' }}>
                             <FiEdit2 />
