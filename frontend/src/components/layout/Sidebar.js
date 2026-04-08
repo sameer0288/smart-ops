@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import {
   FiGrid, FiCheckSquare, FiFolder, FiUsers, FiActivity,
-  FiUser, FiLogOut, FiSettings
+  FiUser, FiLogOut
 } from 'react-icons/fi';
 
 const navItems = [

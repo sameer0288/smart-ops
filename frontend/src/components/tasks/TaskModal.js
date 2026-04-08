@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -7,7 +7,7 @@ import { useAuth } from '../../context/AuthContext';
 import { FiX, FiSave } from 'react-icons/fi';
 
 const TaskModal = ({ task, onClose, onSave }) => {
-  const { isManagerOrAdmin, user } = useAuth();
+  const { isManagerOrAdmin } = useAuth();
   const queryClient = useQueryClient();
   const isEdit = !!task;
 

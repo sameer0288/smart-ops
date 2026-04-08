@@ -17,10 +17,6 @@ const STATUS_COLORS = {
   todo: '#64748b', in_progress: '#3b82f6', in_review: '#8b5cf6',
   blocked: '#ef4444', completed: '#10b981', cancelled: '#475569'
 };
-const PRIORITY_COLORS = {
-  low: '#10b981', medium: '#3b82f6', high: '#f59e0b', critical: '#ef4444'
-};
-
 const ActivityIcon = ({ action }) => {
   const icons = {
     task_created: '✅', task_updated: '✏️', task_completed: '🎉',
@@ -66,7 +62,7 @@ const Dashboard = () => {
     </div>
   );
 
-  const { summary = {}, tasksByStatus = {}, tasksByPriority = {}, recentActivity = [], upcomingTasks = [], completionTrend = [], topPerformers = [] } = dashData || {};
+  const { summary = {}, tasksByStatus = {}, recentActivity = [], upcomingTasks = [], completionTrend = [], topPerformers = [] } = dashData || {};
 
   const statusData = Object.entries(tasksByStatus).map(([name, value]) => ({ name: name.replace('_', ' '), value, color: STATUS_COLORS[name] }));
   const trendData = completionTrend.map(d => ({ date: format(new Date(d._id), 'MMM d'), completed: d.count }));

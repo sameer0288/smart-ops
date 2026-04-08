@@ -13,8 +13,6 @@ import TaskModal from '../components/tasks/TaskModal';
 
 const STATUS_LABELS = { todo: 'To Do', in_progress: 'In Progress', in_review: 'In Review', blocked: 'Blocked', completed: 'Completed', cancelled: 'Cancelled' };
 const STATUS_COLORS = { todo: '#64748b', in_progress: '#3b82f6', in_review: '#8b5cf6', blocked: '#ef4444', completed: '#10b981', cancelled: '#475569' };
-const PRIORITY_COLORS = { low: '#10b981', medium: '#3b82f6', high: '#f59e0b', critical: '#ef4444' };
-
 const TaskDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();

@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import api from '../utils/api';
-import { FiPlus, FiSearch, FiEdit2, FiUserX, FiX, FiSave, FiShield } from 'react-icons/fi';
+import { FiPlus, FiSearch, FiEdit2, FiUserX, FiX, FiSave } from 'react-icons/fi';
 
 const UserModal = ({ user: editUser, onClose, onSave }) => {
   const isEdit = !!editUser;

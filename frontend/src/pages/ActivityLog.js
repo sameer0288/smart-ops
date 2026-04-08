@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { formatDistanceToNow, format } from 'date-fns';
 import api from '../utils/api';
-import { useAuth } from '../context/AuthContext';
-import { FiSearch, FiFilter } from 'react-icons/fi';
 
 const ACTION_ICONS = {
   task_created: '✅', task_updated: '✏️', task_deleted: '🗑️', task_completed: '🎉',
@@ -26,7 +24,6 @@ const ACTION_LABELS = {
 };
 
 const ActivityLog = () => {
-  const { isManagerOrAdmin } = useAuth();
   const [page, setPage] = useState(1);
   const [action, setAction] = useState('');
   const [entity, setEntity] = useState('');

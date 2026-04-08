@@ -6,8 +6,8 @@ import toast from 'react-hot-toast';
 import api from '../utils/api';
 import { useAuth } from '../context/AuthContext';
 import {
-  FiPlus, FiSearch, FiFilter, FiGrid, FiList, FiEdit2, FiTrash2,
-  FiUser, FiCalendar, FiTag, FiMoreVertical, FiCheckCircle, FiClock
+  FiPlus, FiSearch, FiGrid, FiList, FiEdit2, FiTrash2,
+  FiUser, FiCalendar, FiMoreVertical
 } from 'react-icons/fi';
 import TaskModal from '../components/tasks/TaskModal';
 

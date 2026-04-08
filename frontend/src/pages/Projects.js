@@ -8,8 +8,6 @@ import api from '../utils/api';
 import { useAuth } from '../context/AuthContext';
 import { FiPlus, FiSearch, FiEdit2, FiTrash2, FiUsers, FiX, FiSave } from 'react-icons/fi';
 
-const STATUS_COLORS = { planning: '#64748b', active: '#10b981', on_hold: '#f59e0b', completed: '#6366f1', cancelled: '#ef4444' };
-
 const ProjectModal = ({ project, onClose, onSave, users }) => {
   const { user } = useAuth();
   const isEdit = !!project;
